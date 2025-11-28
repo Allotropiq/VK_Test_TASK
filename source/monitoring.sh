@@ -10,13 +10,18 @@ if [[ ! "$INT" =~ ^[0-9]+$ ]]; then
     errorFlag=1;
 elif [ $1 -eq $INT ]; then 
     INT=$1
-else
-   exec ./checkscript.sh &
+else 
+    PID=$(pgrep -f checkscript.sh)                  #Отработка ошибок: поиск и завершение процесса со старой конфигурацией
+    if [[ ! -z "$PID" ]]; then
+        kill $PID > /dev/null 2>&1
+    fi
+    exec ./checkscript.sh &
+    echo "Новое значаение применено. $(date '+%Y-%m-%d %H:%M:%S')" | tee -a monitoring.log;
 fi
 
 #Отработка ошибок: проверка активности контейнера с приложением
 if ! docker ps | grep -q -e mini_server ; then
-    pushd ./source/ &&  docker compose up -d && popd;
+    pushd ./source/ &&  docker compose up -d && popd > /dev/null 2>&1;
     echo "Запуск контейнера с приложением $(date '+%Y-%m-%d %H:%M:%S')" | tee -a monitoring.log;
 else 
     if curl -sI "$SITEURL" | grep -q -e "HTTP/.* 2.." -e "HTTP/.* 3.." ; then                                               #Отработка ошибок: проверка работы сайта по коду ответа
