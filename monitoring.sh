@@ -8,8 +8,8 @@ errorFlag=0
 if [[ ! "$INT" =~ ^[0-9]+$ ]]; then
     echo "Новое значение не применено, будет использовано изначальное. $(date '+%Y-%m-%d %H:%M:%S')" | tee -a monitoring.log;
     errorFlag=1;
-elif [ "$1" -eq "$int" ]; then 
-    $INT=$1
+elif $1 -eq $int; then 
+    INT=$1
 else
     exec checkscript.sh
 fi
