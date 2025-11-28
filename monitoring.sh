@@ -11,7 +11,7 @@ if [[ ! "$INT" =~ ^[0-9]+$ ]]; then
 elif $1 -eq $int; then 
     $INT=$1
 else
-    exec ../checkscript.sh
+    exec checkscript.sh
 fi
 
 if ! docker ps | grep mini_server; then 
