@@ -1,4 +1,4 @@
 #!/bin/bash
 
-./mini_server &
-exec nginx -g 'daemon off;'
+./mini_server &                #запуск fcgi сервера
+exec nginx -g 'daemon off;'    #запуск nginx

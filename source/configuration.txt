@@ -1,1 +1,3 @@
-Интервал запуска в секундах:24656g
+Интервал запуска в секундах=10
+Репозиторий скрипта=https://raw.githubusercontent.com/Allotropiq/VK_Test_TASK/refs/heads/main/monitoring.sh
+Адрес сайта проверяемого сайта=http://localhost:8008/

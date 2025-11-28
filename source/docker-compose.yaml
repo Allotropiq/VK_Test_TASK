@@ -9,9 +9,9 @@ services:
     container_name: mini_server
     volumes:  
       - type: bind
-        source: './nginx/nginx.conf'
+        source: './nginx/nginx.conf'              #Проброс файлов конфигурации nginx внутрь контейнера
         target: /etc/nginx/nginx.conf,chmod=755
     networks:
-      - 'newnet'
+      - 'newnet'                                      
     ports:
-      - '80:81'
+      - '8008:81' #Локальный порт для доступа и внутренний соответственно
