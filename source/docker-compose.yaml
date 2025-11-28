@@ -1,0 +1,17 @@
+networks:
+  newnet:
+    driver: bridge
+services:
+  mini_server:
+    build:
+      context: .
+    image: miniserver:3.0
+    container_name: mini_server
+    volumes:  
+      - type: bind
+        source: './nginx/nginx.conf'
+        target: /etc/nginx/nginx.conf,chmod=755
+    networks:
+      - 'newnet'
+    ports:
+      - '80:81'
