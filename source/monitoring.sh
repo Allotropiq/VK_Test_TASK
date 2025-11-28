@@ -30,7 +30,7 @@ else
         echo "Неполадки на стороне клиента. $(date '+%Y-%m-%d %H:%M:%S')" | tee -a monitoring.log;
     else 
         echo "Неполадки на стороне сервера. Попытка перезагрузки. $(date '+%Y-%m-%d %H:%M:%S')" | tee -a monitoring.log;    #Отработка ошибок: перезапуск контейнера во всех остальных случаях
-        pushd ./source/ &&  docker compose restart && popd  > /dev/null 2>&1;
+        pushd ./source/ &&  docker compose restart && popd > /dev/null 2>&1;
         sleep 60                                                                                                            #Отработка ошибок: время на запуск контейнера
     fi
 fi 
