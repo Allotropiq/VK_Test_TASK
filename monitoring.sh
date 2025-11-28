@@ -1,5 +1,5 @@
 #!/bin/bash 
-CONFFILE="./configuration.txt"
+CONFFILE="configuration.txt"
 SITEURL=$(grep "Адрес сайта=" $CONFFILE | awk -F'=' '{print $2}' | tr -d ' \t\r\n')
 INT=$(grep "Интервал запуска в секундах=" $CONFFILE | awk -F'=' '{print $2}' | tr -d ' \t\r\n')
 errorFlag=0
@@ -26,3 +26,4 @@ else
         echo "Неполадки на стороне сервера. Попытка перезагрузки. $(date '+%Y-%m-%d %H:%M:%S')" 
         docker compose restart
     fi
+fi
