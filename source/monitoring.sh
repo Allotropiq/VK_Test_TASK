@@ -11,7 +11,7 @@ if [[ ! "$INT" =~ ^[0-9]+$ ]]; then
 elif [ $1 -eq $INT ]; then 
     INT=$1
 else
-   nohup exec ./checkscript.sh &
+   exec ./checkscript.sh &
 fi
 
 #Отработка ошибок: проверка активности контейнера с приложением
